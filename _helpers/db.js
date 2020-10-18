@@ -16,8 +16,8 @@ async function initialize() {
     const sequelize = new Sequelize(database, user, password, { dialect: 'mysql' });
 
     // init models and add them to the exported db object
-    db.Account = require('../accounts/account.model')(sequelize);
-    db.RefreshToken = require('../accounts/refresh-token.model')(sequelize);
+    db.Account = require('../models/account.model')(sequelize);
+    db.RefreshToken = require('../models/refresh-token.model')(sequelize);
 
     // define relationships
     db.Account.hasMany(db.RefreshToken, { onDelete: 'CASCADE' });
